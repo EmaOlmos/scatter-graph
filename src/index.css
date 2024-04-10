@@ -1,0 +1,8 @@
+.tooltip{
+    position: fixed;
+    pointer-events: none;
+    background-color: aqua;
+    border-radius: 1rem;
+    padding: 0.4rem;
+    font-size: 0.7rem;
+}

@@ -10,7 +10,7 @@ function App() {
   useEffect(() => {
     const data = d3.json(url).then((d) => {
       const margin = 50;
-      const width = 800;
+      const width = 750;
       const height = 600; // svg scale
       let time = [];
 
@@ -34,6 +34,13 @@ function App() {
         .attr("height", height)
         .style("background-color", "aliceblue");
 
+      const tooltip = d3
+        .select("body")
+        .append("div")
+        .attr("class", "tooltip")
+        .attr("id", "tooltip")
+        .style("opacity", 0);
+
       // config scales to make the axises
       const x = d3.scaleLinear(
         [yearsMin - 1, yearsMax + 1],
@@ -52,16 +59,40 @@ function App() {
         .attr("transform", `translate(${margin}, 0)`)
         .call(d3.axisLeft(y).tickFormat(d3.timeFormat("%M:%S")));
 
-      // console.log(d);
+      console.log(d);
 
       svg
         .selectAll("circle")
         .data(d)
         .join("circle")
         .attr("r", 5)
-        .attr("fill", "blue")
+        .attr("fill", (d) => (d.Doping ? "blue" : "orange"))
         .attr("cx", (d, i) => x(d.Year))
-        .attr("cy", (d, i) => y(time[i]));
+        .attr("cy", (d, i) => y(time[i]))
+        .on("mouseover", (e, d) => {
+          tooltip.style("opacity", 0.9);
+          tooltip.attr("data-year", d.Year);
+
+          tooltip.html(
+            d.Name +
+              ": " +
+              d.Nationality +
+              "<br/>" +
+              "Year: " +
+              d.Year +
+              ", " +
+              "Time: " +
+              d.Time +
+              "<br/>" +
+              (d.Doping ? "<br/>" + d.Doping : "")
+          );
+
+          tooltip.style("left", e.clientX + 20 + "px");
+          tooltip.style("top", e.clientY - 28 + "px");
+        })
+        .on("mouseout", () => {
+          tooltip.style("opacity", 0);
+        });
     });
   }, []);
   return (
