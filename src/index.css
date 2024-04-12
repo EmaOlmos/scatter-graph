@@ -1,8 +1,27 @@
+:root{
+    --background-color: #FFFFFF; /* white */
+    --scatter-point-color-1: #FFA500; /* orange */
+    --scatter-point-color-2: #ADD8E6; /* light blue */
+    --axes-color: #333333; /* dark gray */
+    --gridlines-color: #CCCCCC; /* light gray */
+    --title-color: #000000; /* black */
+    --label-color: #666666; /* medium gray */
+    --tooltip-color: #FFD700; /* gold */
+}
+
+
+*{
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
 .tooltip{
     position: fixed;
     pointer-events: none;
     background-color: aqua;
-    border-radius: 1rem;
+    border-radius: 0.5rem;
     padding: 0.4rem;
-    font-size: 0.7rem;
+    font-size: 0.8rem;
 }
