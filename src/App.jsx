@@ -66,7 +66,7 @@ function App() {
         .data(d)
         .join("circle")
         .attr("r", 5)
-        .attr("fill", (d) => (d.Doping ? "blue" : "orange"))
+        .attr("fill", (d) => (d.Doping ? "#ADD8E6" : "#FFA500"))
         .attr("cx", (d, i) => x(d.Year))
         .attr("cy", (d, i) => y(time[i]))
         .on("mouseover", (e, d) => {
