@@ -6,7 +6,7 @@
     --gridlines-color: #CCCCCC; /* light gray */
     --title-color: #000000; /* black */
     --label-color: #666666; /* medium gray */
-    --tooltip-color: #FFD700; /* gold */
+    --tooltip-color: #a9c0d4; /* dark blue */
 }
 
 
@@ -20,8 +20,17 @@
 .tooltip{
     position: fixed;
     pointer-events: none;
-    background-color: aqua;
+    background-color: var(--tooltip-color);
     border-radius: 0.5rem;
     padding: 0.4rem;
     font-size: 0.8rem;
+}
+
+.allWrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
 }
