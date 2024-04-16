@@ -97,6 +97,7 @@ function App() {
   }, []);
   return (
     <>
+      <div className=""></div>
       <svg ref={svgRef}></svg>
     </>
   );
